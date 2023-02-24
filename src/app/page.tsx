@@ -1,11 +1,11 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '@/styles/page.module.css'
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
+import { type NextPage } from 'next'
+import { ReactNode } from 'react'
 
-const inter = Inter({ subsets: ['cyrillic', 'latin'] })
-
-const Home: React.FC = (): JSX.Element => {
-  return <main className={styles.main}></main>
-}
+const Home: NextPage = ({ children }: { children?: ReactNode }): JSX.Element => (
+  <>
+    <div className='page-wrapper'>{children}</div>
+  </>
+)
 
 export default Home

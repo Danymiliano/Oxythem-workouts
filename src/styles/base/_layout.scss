@@ -1,0 +1,24 @@
+.page-wrapper {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @include breakpoint(sm) {
+    padding: 0 2rem;
+  }
+
+  @include breakpoint(md) {
+    padding: 0 4rem;
+  }
+}
+
+section {
+  margin: 4rem 0;
+}

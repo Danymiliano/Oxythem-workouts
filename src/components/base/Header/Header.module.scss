@@ -1,0 +1,59 @@
+@import '../../../styles/base/_breakpoints.scss';
+@import '../../../styles/base/_colors.scss';
+
+.header {
+  position: relative;
+  background-color: $white;
+  border-bottom: 1px solid $primary;
+}
+
+.header-inner {
+  padding: 1rem;
+
+  @include breakpoint(sm) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.nav-wrapper {
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include breakpoint(sm) {
+    display: flex;
+  }
+
+  @include breakpoint(sm, down) {
+    position: absolute;
+    z-index: -1;
+    top: 100%;
+    right: 0;
+    left: 0;
+    visibility: hidden;
+    transition: transform .3s ease-out, opacity .3s ease-out;
+    transform: translateY(-100%);
+    opacity: 0;
+    background-color: $white;
+  }
+}
+
+.item {
+  a {
+    display: block;
+    padding: 1.5rem 1rem;
+    transition: .3s ease;
+
+     &:hover {
+        color: $primary;
+     }
+
+    @include breakpoint(sm) {
+      margin-right: 3.25rem;
+      padding: 0;
+    }
+  }
+}

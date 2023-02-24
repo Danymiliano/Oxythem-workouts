@@ -1,24 +1,25 @@
-import '@/styles/globals.css'
+import '@/styles/index.scss'
+
+import { FC, ReactNode } from 'react'
+import { Provider } from 'react-redux'
+
+import { Header } from '@/components/base/Header/Header'
+import store from '@/store'
 
 interface T {
-  children: React.ReactNode
+  children: ReactNode
 }
 
-const RootLayout: React.FC<T> = ({
-  children
-}: {
-  children: React.ReactNode
-}): JSX.Element => {
-  return (
-    <html lang='ru'>
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body>{children}</body>
-    </html>
-  )
-}
+const RootLayout: FC<T> = ({ children }: { children: ReactNode }): JSX.Element => (
+  <html lang='ru'>
+    <head />
+    <body>
+      <Provider store={store}>
+        <Header />
+      </Provider>
+      {children}
+    </body>
+  </html>
+)
 
 export default RootLayout

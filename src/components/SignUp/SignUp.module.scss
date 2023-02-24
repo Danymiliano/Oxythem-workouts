@@ -1,0 +1,85 @@
+@import '@/styles/base/colors';
+@import '@/styles/base/typography';
+
+.wrapper {
+  display: flex;
+  max-width: 100%;
+  height: calc(100vh - 5em);
+  justify-content: center;
+  align-items: center;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    font-size: 2.2rem;
+    margin-top: 0;
+  }
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2em auto;
+    align-items: center;
+    border: 2px solid $primary;
+    border-radius: $default-border-radius;
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 50rem;
+      margin-top: 1em;
+
+      .error {
+        color: red;
+      }
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      label {
+        color: $primary;
+        font-size: 16px;
+        padding-bottom: 0.2em;
+      }
+
+      .input {
+        font-size: 18px;
+        height: 2.5em;
+        border-radius: $small-border-radius;
+        background-color: $tertiary;
+      }
+    }
+    
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      padding: 1em 0;
+
+      .sign-up__button {
+        background-color: $primary;
+        color: $white;
+
+        &:hover {
+          background-color: $active;
+          border: 2px solid $active;
+        }
+
+        &:active {
+          background-color: $white;
+          color: $active;
+        }
+      }
+    }
+  }
+}
+
+.form {
+  padding: 2em 2em;
+
+  h3 {
+    color: $primary;
+  }
+}

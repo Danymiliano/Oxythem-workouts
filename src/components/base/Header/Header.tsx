@@ -18,7 +18,7 @@ export const Header: FC = (): JSX.Element => (
               <Link href='/schedule'>План тренировок</Link>
             </li>
             <li className={styles.item}>
-              <Link href='/equipment'>Оборудование</Link>
+              <Link href='/workouts'>Упражнения</Link>
             </li>
             <li className={styles.item}>
               <Link href='/login'>Вход</Link>

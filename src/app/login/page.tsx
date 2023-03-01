@@ -1,8 +1,6 @@
-import { type NextPage } from 'next'
-
 import { SignIn } from '@/components/SignIn/SignIn'
 
-const Login: NextPage = (): JSX.Element => (
+const Login: React.FC = (): JSX.Element => (
   <>
     <SignIn />
   </>

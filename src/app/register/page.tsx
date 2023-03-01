@@ -1,8 +1,7 @@
-import { type NextPage } from 'next'
 import React from 'react'
 
 import { SignUp } from '@/components/SignUp/SignUp'
 
-const Register: NextPage = () => <SignUp />
+const Register: React.FC = (): JSX.Element => <SignUp />
 
 export default Register

@@ -1,8 +1,7 @@
 import { ExerciseCard } from '@/components/ExerciseCard/ExerciseCard'
 
-const Workouts = () => (
+const Workouts: React.FC = (): JSX.Element => (
   <div className='container'>
-    {/* @ts-expect-error Server Component */}
     <ExerciseCard />
   </div>
 )

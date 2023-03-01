@@ -1,6 +1,4 @@
-import { FC } from 'react'
-
-const Head: FC = (): JSX.Element => (
+const Head: React.FC = (): JSX.Element => (
   <>
     <title>Oxythem Workouts</title>
     <meta content='width=device-width, initial-scale=1' name='viewport' />

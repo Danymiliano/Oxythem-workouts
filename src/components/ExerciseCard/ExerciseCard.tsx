@@ -1,17 +1,9 @@
+'use client'
+
 import Image from 'next/image'
+import React, { FC, useEffect, useState } from 'react'
 
 import styles from './ExerciseCard.module.scss'
-
-const getExercises = async () => {
-  const res = await fetch(`${process.env.API_HOST}/exercises`)
-  const exercises = res.json()
-
-  if (!res.ok) {
-    throw new Error('Не удалось получить данные')
-  }
-
-  return exercises
-}
 
 interface ExerciseDetailsTypes {
   id: string
@@ -23,14 +15,30 @@ interface ExerciseDetailsTypes {
   secondExerciseImage: string
 }
 
-export const ExerciseCard = async () => {
-  const exercises = await getExercises()
+export const ExerciseCard: FC = (): JSX.Element => {
+  const [exercises, setExercises] = useState<Array<object>>([])
+
+  const API_ROOT = 'http://localhost:3000/api/'
+  const API_EXERCISES = 'exercises'
+
+  useEffect(() => {
+    const getExercises = async (url: string) => {
+      try {
+        const res = await fetch(url)
+        const data = await res.json()
+        setExercises(data)
+      } catch (error) {
+        throw new Error('Не удалось получить данные')
+      }
+    }
+    getExercises(API_ROOT + API_EXERCISES)
+  }, [])
 
   return (
     <div>
       {exercises &&
         exercises.map((exerciseEquipment: any) =>
-          exerciseEquipment.dumbbells.triceps.map((exerciseDetails: ExerciseDetailsTypes) => (
+          exerciseEquipment.dumbbells.chest.map((exerciseDetails: ExerciseDetailsTypes) => (
             <div key={exerciseDetails.id} className={styles.card}>
               <h3 className={styles.headline}>{exerciseDetails.name}</h3>
               <div key={exerciseDetails.id}>

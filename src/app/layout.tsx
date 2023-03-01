@@ -1,14 +1,14 @@
 import '@/styles/index.scss'
 
-import { FC, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 import { Header } from '@/components/base/Header/Header'
 
-interface T {
+interface RootLayoutProps {
   children: ReactNode
 }
 
-const RootLayout: FC<T> = ({ children }: { children: ReactNode }): JSX.Element => (
+const RootLayout: React.FC<RootLayoutProps> = ({ children }: RootLayoutProps) => (
   <html lang='ru'>
     <head />
     <body>

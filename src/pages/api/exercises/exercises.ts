@@ -1219,8 +1219,8 @@ export const exercises = [
           difficulty: 'Средняя сложность',
           targetMuscles: 'Пресс (10/10)',
           description: 'Упражнение нацелено на развитие мышц брюшного пресса.',
-          firstExerciseImage: '',
-          secondExerciseImage: '',
+          firstExerciseImage: '/exercises/band/BandCrunches1.webp',
+          secondExerciseImage: '/exercises/band/BandCrunches2.webp',
         },
       ],
       chest: [
@@ -1231,8 +1231,8 @@ export const exercises = [
           targetMuscles: 'Грудь (8/10), передняя дельта (4/10)',
           description:
             'Упражнение нацелено на проработку мышц груди, также задействуется передняя дельта и мышцы-стабилизаторы.',
-          firstExerciseImage: '',
-          secondExerciseImage: '',
+          firstExerciseImage: '/exercises/band/BandSingleArmChestPress1.webp',
+          secondExerciseImage: '/exercises/band/BandSingleArmChestPress2.webp',
         },
         {
           id: nanoid(),
@@ -1241,8 +1241,8 @@ export const exercises = [
           targetMuscles: 'Грудь (8/10), передняя дельта (4/10)',
           description:
             'Упражнение нацелено на проработку мышц груди, также задействуется передняя дельта и мышцы-стабилизаторы.',
-          firstExerciseImage: '',
-          secondExerciseImage: '',
+          firstExerciseImage: '/exercises/band/BandChestPress1.webp',
+          secondExerciseImage: '/exercises/band/BandChestPress2.webp',
         },
         {
           id: nanoid(),
@@ -1251,8 +1251,8 @@ export const exercises = [
           targetMuscles: 'Грудь (9/10), трицепс (6/10), передняя дельта (6/10)',
           description:
             'Упражнение нацелено на проработку мышц груди, также задействуется передняя дельта, мышцы-стабилизаторы и трицепс.',
-          firstExerciseImage: '',
-          secondExerciseImage: '',
+          firstExerciseImage: '/exercises/band/BandPushUps1.webp',
+          secondExerciseImage: '/exercises/band/BandPushUps2.webp',
         },
         {
           id: nanoid(),
@@ -1260,8 +1260,8 @@ export const exercises = [
           difficulty: 'Начальная сложность',
           targetMuscles: 'Грудь (9/10)',
           description: 'Упражнение нацелено на растяжку и развитие грудных мышц.',
-          firstExerciseImage: '',
-          secondExerciseImage: '',
+          firstExerciseImage: '/exercises/band/BandSingleArmPecFly1.webp',
+          secondExerciseImage: '/exercises/band/BandSingleArmPecFly2.webp',
         },
         {
           id: nanoid(),
@@ -1269,8 +1269,8 @@ export const exercises = [
           difficulty: 'Начальная сложность',
           targetMuscles: 'Грудь (9/10)',
           description: 'Упражнение нацелено на растяжку и развитие грудных мышц.',
-          firstExerciseImage: '',
-          secondExerciseImage: '',
+          firstExerciseImage: '/exercises/band/BandChestFly1.webp',
+          secondExerciseImage: '/exercises/band/BandChestFly2.webp',
         },
       ],
       triceps: [
@@ -1280,8 +1280,8 @@ export const exercises = [
           difficulty: 'Начальная сложность',
           targetMuscles: 'Трицепс (10/10)',
           description: 'Упражнение нацелено на проработку трицепса.',
-          firstExerciseImage: '',
-          secondExerciseImage: '',
+          firstExerciseImage: '/exercises/band/BandPushdown1.webp',
+          secondExerciseImage: '/exercises/band/BandPushdown2.webp',
         },
         {
           id: nanoid(),
@@ -1289,8 +1289,8 @@ export const exercises = [
           difficulty: 'Продвинутая сложность',
           targetMuscles: 'Трицепс (10/10)',
           description: 'Упражнение нацелено на проработку трицепса.',
-          firstExerciseImage: '',
-          secondExerciseImage: '',
+          firstExerciseImage: '/exercises/band/BandSkullcrusher1.webp',
+          secondExerciseImage: '/exercises/band/BandSkullcrusher2.webp',
         },
         {
           id: nanoid(),
@@ -1298,8 +1298,8 @@ export const exercises = [
           difficulty: 'Продвинутая сложность',
           targetMuscles: 'Трицепс (10/10)',
           description: 'Упражнение нацелено на проработку трицепса.',
-          firstExerciseImage: '',
-          secondExerciseImage: '',
+          firstExerciseImage: '/exercises/band/BandOverheadExtension1.webp',
+          secondExerciseImage: '/exercises/band/BandOverheadExtension2.webp',
         },
       ],
       biceps: [

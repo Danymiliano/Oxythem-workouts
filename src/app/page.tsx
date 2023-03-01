@@ -1,10 +1,9 @@
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
-import { type NextPage } from 'next'
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
-const Home: NextPage = ({ children }: { children?: ReactNode }): JSX.Element => (
+const Home: React.FC = () => (
   <>
-    <div className='page-wrapper'>{children}</div>
+    <div className='page-wrapper'></div>
   </>
 )
 

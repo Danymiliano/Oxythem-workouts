@@ -1,10 +1,9 @@
-import { query } from 'firebase/firestore'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { exercises } from './exercises/exercises'
+import { exercises } from './exercises/[id]'
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
-  const { method, query } = req
+  const { method } = req
 
   switch (method) {
     case 'GET':

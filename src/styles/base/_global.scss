@@ -13,6 +13,8 @@ body {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   background-color: $secondary;
 }
@@ -21,25 +23,3 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
-// button {
-//   background-color: $white;
-//   color: $primary;
-//   padding: 0.75em 1em;
-//   font-weight: 700;
-//   border: $default-border;
-//   outline: none;
-//   border-radius: $default-border-radius;
-//   transition: $default-transition;
-
-//   &:hover {
-//     background-color: $tertiary;
-//     cursor: pointer;
-//     transition: $default-transition;
-//   }
-
-//   &:active {
-//     background-color: $primary;
-//     color: $white;
-//   }
-// }

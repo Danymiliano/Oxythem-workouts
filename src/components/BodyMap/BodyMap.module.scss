@@ -1,0 +1,18 @@
+@import '@/styles/base/colors';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 700px;
+  height: 750px;
+}
+
+.muscle {
+  color: $transparent-gray;
+
+  &:hover {
+    color: $primary;
+    cursor: pointer;
+  }
+}

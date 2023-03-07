@@ -1,0 +1,10 @@
+@import '@/styles/base/colors';
+
+.muscle {
+  color: $transparent-gray;
+
+  &:hover {
+    color: $primary;
+    cursor: pointer;
+  }
+}

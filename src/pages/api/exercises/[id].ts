@@ -1,6 +1,18 @@
 import { nanoid } from 'nanoid'
 
-export const exercises = [
+export interface IExerciseDetails {
+  id: string
+  name: string
+  difficulty: string
+  targetMuscles: string
+  description: string
+  firstExerciseImage: string
+  secondExerciseImage: string
+  equipmentCategory: number
+  bodyPartCategory: number
+}
+
+export const exercises: IExerciseDetails[] = [
   {
     id: nanoid(),
     name: 'Скручивания',

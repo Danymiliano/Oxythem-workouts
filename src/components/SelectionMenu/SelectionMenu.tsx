@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC, MouseEvent, useState } from 'react'
+import { FC, MouseEvent, useState } from 'react'
 
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { setActiveBand, setActiveBarbell, setActiveBodyweight, setActiveDumbbells } from '@/store/slices/equipmentSlice'

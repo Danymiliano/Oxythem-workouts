@@ -1,51 +1,94 @@
 'use client'
 
-import { FC, MouseEvent, useState } from 'react'
+import { FC, MouseEvent, useEffect, useState } from 'react'
 
-import { useAppDispatch } from '@/hooks/useAppDispatch'
-import { setActiveBand, setActiveBarbell, setActiveBodyweight, setActiveDumbbells } from '@/store/slices/equipmentSlice'
+import { useAppDispatch, useAppSelector } from '@/hooks/useAppDispatch'
+import { RootState } from '@/store'
+import {
+  filterByBandExercises,
+  filterByBarbellExercises,
+  filterByBodyweightExercises,
+  filterByDumbbellsExercises,
+  setActiveBand,
+  setActiveBarbell,
+  setActiveBodyweight,
+  setActiveDumbbells,
+} from '@/store/slices/equipmentSlice'
+import { getExercises } from '@/store/slices/exercisesSlice'
 
 import { Button } from '../base/Button/Button'
 import styles from './SelectionMenu.module.scss'
 
 export interface EquipmentState {
-  bodyweight: boolean
-  dumbbells: boolean
-  barbell: boolean
-  band: boolean
+  isDumbbellsActive: boolean
+  isBodyweightActive: boolean
+  isBarbellActive: boolean
+  isBandActive: boolean
 }
 
 export const SelectionMenu: FC = () => {
   const [isActive, setIsActive] = useState<EquipmentState>({
-    bodyweight: false,
-    dumbbells: false,
-    barbell: false,
-    band: false,
+    isDumbbellsActive: false,
+    isBodyweightActive: false,
+    isBarbellActive: false,
+    isBandActive: false,
   })
 
+  const exercises = useAppSelector((state: RootState) => state.exercises.exercisesList)
+
   const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getExercises())
+  }, [dispatch])
 
   const buttonHandler = (event: MouseEvent<HTMLButtonElement>): void => {
     const textContent = (event.target as HTMLElement).textContent
 
-    if (textContent === 'Вес тела') {
-      setIsActive({ ...isActive, bodyweight: !isActive.bodyweight, dumbbells: false, barbell: false, band: false })
-      dispatch(setActiveBodyweight(isActive))
-    }
-
-    if (textContent === 'Гантели') {
-      setIsActive({ ...isActive, bodyweight: false, dumbbells: !isActive.dumbbells, barbell: false, band: false })
-      dispatch(setActiveDumbbells(isActive))
-    }
-
-    if (textContent === 'Штанга') {
-      setIsActive({ ...isActive, bodyweight: false, dumbbells: false, barbell: !isActive.barbell, band: false })
-      dispatch(setActiveBarbell(isActive))
-    }
-
-    if (textContent === 'Эспандер') {
-      setIsActive({ ...isActive, bodyweight: false, dumbbells: false, barbell: false, band: !isActive.band })
-      dispatch(setActiveBand(isActive))
+    switch (textContent) {
+      case 'Вес тела':
+        setIsActive({
+          ...isActive,
+          isBodyweightActive: !isActive.isBodyweightActive,
+          isDumbbellsActive: false,
+          isBarbellActive: false,
+          isBandActive: false,
+        })
+        dispatch(filterByBodyweightExercises(exercises))
+        dispatch(setActiveBodyweight(isActive))
+        break
+      case 'Гантели':
+        setIsActive({
+          ...isActive,
+          isBodyweightActive: false,
+          isDumbbellsActive: !isActive.isDumbbellsActive,
+          isBarbellActive: false,
+          isBandActive: false,
+        })
+        dispatch(filterByDumbbellsExercises(exercises))
+        dispatch(setActiveDumbbells(isActive))
+        break
+      case 'Штанга':
+        setIsActive({
+          ...isActive,
+          isBodyweightActive: false,
+          isDumbbellsActive: false,
+          isBarbellActive: !isActive.isBarbellActive,
+          isBandActive: false,
+        })
+        dispatch(filterByBarbellExercises(exercises))
+        dispatch(setActiveBarbell(isActive))
+        break
+      case 'Эспандер':
+        setIsActive({
+          ...isActive,
+          isBodyweightActive: false,
+          isDumbbellsActive: false,
+          isBarbellActive: false,
+          isBandActive: !isActive.isBandActive,
+        })
+        dispatch(filterByBandExercises(exercises))
+        dispatch(setActiveBand(isActive))
     }
   }
 
@@ -53,27 +96,31 @@ export const SelectionMenu: FC = () => {
     <div className='container'>
       <section className={styles.section}>
         <Button
-          color={isActive.bodyweight ? 'secondary' : 'primary'}
+          color={isActive.isBodyweightActive ? 'secondary' : 'primary'}
           buttonType='button'
           onClick={(e) => buttonHandler(e)}
         >
           Вес тела
         </Button>
         <Button
-          color={isActive.dumbbells ? 'secondary' : 'primary'}
+          color={isActive.isDumbbellsActive ? 'secondary' : 'primary'}
           buttonType='button'
           onClick={(e) => buttonHandler(e)}
         >
           Гантели
         </Button>
         <Button
-          color={isActive.barbell ? 'secondary' : 'primary'}
+          color={isActive.isBarbellActive ? 'secondary' : 'primary'}
           buttonType='button'
           onClick={(e) => buttonHandler(e)}
         >
           Штанга
         </Button>
-        <Button color={isActive.band ? 'secondary' : 'primary'} buttonType='button' onClick={(e) => buttonHandler(e)}>
+        <Button
+          color={isActive.isBandActive ? 'secondary' : 'primary'}
+          buttonType='button'
+          onClick={(e) => buttonHandler(e)}
+        >
           Эспандер
         </Button>
       </section>

@@ -1,10 +1,9 @@
 'use client'
 
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { FC, MouseEvent, useState } from 'react'
 
-import { useAppDispatch, useAppSelector } from '@/hooks/useAppDispatch'
-import { RootState } from '@/store'
+import { useAppDispatch } from '@/hooks/useAppDispatch'
 import {
   setAbdominals,
   setBiceps,
@@ -52,9 +51,7 @@ export const BodyMap: FC = () => {
     calves: false,
   })
 
-  useAppSelector((state: RootState) => state.bodyPart)
-  const equipmentData = useAppSelector((state: RootState) => state.equipment)
-
+  const router = useRouter()
   const dispatch = useAppDispatch()
 
   const handleBodyPart = (event: MouseEvent<SVGGElement>): void => {
@@ -67,6 +64,7 @@ export const BodyMap: FC = () => {
           abdominals: !bodyPart.abdominals,
         })
         dispatch(setAbdominals(bodyPart))
+        router.push('/exercises/abdominals')
         break
 
       case 'chest':
@@ -75,6 +73,7 @@ export const BodyMap: FC = () => {
           chest: !bodyPart.chest,
         })
         dispatch(setChest(bodyPart))
+        router.push('/exercises/chest')
         break
 
       case 'triceps':
@@ -83,6 +82,7 @@ export const BodyMap: FC = () => {
           triceps: !bodyPart.triceps,
         })
         dispatch(setTriceps(bodyPart))
+        router.push('/exercises/triceps')
         break
 
       case 'biceps':
@@ -91,6 +91,7 @@ export const BodyMap: FC = () => {
           biceps: !bodyPart.biceps,
         })
         dispatch(setBiceps(bodyPart))
+        router.push('/exercises/biceps')
         break
 
       case 'lats':
@@ -99,6 +100,7 @@ export const BodyMap: FC = () => {
           lats: !bodyPart.lats,
         })
         dispatch(setLats(bodyPart))
+        router.push('/exercises/lats')
         break
 
       case 'shoulders':
@@ -107,6 +109,7 @@ export const BodyMap: FC = () => {
           shoulders: !bodyPart.shoulders,
         })
         dispatch(setShoulders(bodyPart))
+        router.push('/exercises/shoulders')
         break
 
       case 'lowerBack':
@@ -115,6 +118,7 @@ export const BodyMap: FC = () => {
           lowerBack: !bodyPart.lowerBack,
         })
         dispatch(setLowerBack(bodyPart))
+        router.push('/exercises/lowerback')
         break
 
       case 'quads':
@@ -123,6 +127,7 @@ export const BodyMap: FC = () => {
           quads: !bodyPart.quads,
         })
         dispatch(setQuads(bodyPart))
+        router.push('/exercises/quads')
         break
 
       case 'hamstrings':
@@ -131,6 +136,7 @@ export const BodyMap: FC = () => {
           hamstrings: !bodyPart.hamstrings,
         })
         dispatch(setHamstrings(bodyPart))
+        router.push('/exercises/hamstrings')
         break
 
       case 'glutes':
@@ -139,6 +145,7 @@ export const BodyMap: FC = () => {
           glutes: !bodyPart.glutes,
         })
         dispatch(setGlutes(bodyPart))
+        router.push('/exercises/glutes')
         break
 
       case 'calves':
@@ -147,6 +154,7 @@ export const BodyMap: FC = () => {
           calves: !bodyPart.calves,
         })
         dispatch(setCalves(bodyPart))
+        router.push('/exercises/calves')
         break
     }
   }

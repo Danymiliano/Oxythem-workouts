@@ -1,22 +1,19 @@
-'use client'
-
 import { FC } from 'react'
 
 import { ExerciseCard } from '@/components/ExerciseCard/ExerciseCard'
 import { SelectionMenu } from '@/components/SelectionMenu/SelectionMenu'
 
-export interface IEquipmentCategories {
-  id: string
-  categoryName: string
+interface IEquipmentPage {
+  params: { equipment: string }
 }
 
-const Exercises: FC = () => (
+const EquipmentPage: FC<IEquipmentPage> = ({ params }: IEquipmentPage) => (
   <>
     <SelectionMenu />
     <div className='container'>
-      <ExerciseCard />
+      <ExerciseCard equipment={params.equipment} />
     </div>
   </>
 )
 
-export default Exercises
+export default EquipmentPage

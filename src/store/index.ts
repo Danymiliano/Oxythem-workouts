@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import bodyPartReducer from './slices/bodyPartSlice'
 import equipmentReducer from './slices/equipmentSlice'
-import exercisesReducer from './slices/exercisesSlice'
 import userReducer from './slices/userSlice'
 
 export const store = configureStore({
@@ -10,7 +9,6 @@ export const store = configureStore({
     user: userReducer,
     bodyPart: bodyPartReducer,
     equipment: equipmentReducer,
-    exercises: exercisesReducer,
   },
 })
 

@@ -1,42 +1,38 @@
 'use client'
 
 import Image from 'next/image'
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 
-import { useAppDispatch, useAppSelector } from '@/hooks/useAppDispatch'
-import { IExerciseDetails } from '@/pages/api/exercises/[id]'
-import { getExercises } from '@/store/slices/exercisesSlice'
-import { defaultCategory } from '@/utils/constants/constants'
+import { useAppSelector } from '@/hooks/useAppDispatch'
+import { IExerciseDetails } from '@/pages/api/exercises/exercises'
+import { RootState } from '@/store'
 
 import styles from './ExerciseCard.module.scss'
 
-interface IExerciseCardProps {
-  bodyPartCategoryId?: number
+interface IExerciseCard {
+  equipment?: string | undefined
 }
 
-export const ExerciseCard: FC<IExerciseCardProps> = ({ bodyPartCategoryId }: IExerciseCardProps): JSX.Element => {
-  const exercises = useAppSelector((state) => state.exercises.exercisesList)
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(getExercises())
-  }, [dispatch])
+export const ExerciseCard: FC<IExerciseCard> = ({ equipment }: IExerciseCard): JSX.Element => {
+  const filteredExercisesByEquipment = useAppSelector((state: RootState) => state.equipment.exercisesByEquipment)
+  const bodyPartId = useAppSelector((state: RootState) => state.bodyPart.bodyPartId)
 
   return (
     <div>
-      {exercises &&
-        exercises.map(
-          ({
-            id,
-            name,
-            difficulty,
-            targetMuscles,
-            firstExerciseImage,
-            secondExerciseImage,
-            description,
-            bodyPartCategory,
-          }: IExerciseDetails) =>
-            bodyPartCategoryId === defaultCategory ? (
+      {filteredExercisesByEquipment &&
+        filteredExercisesByEquipment
+          .filter((exerciseDetails) => (equipment ? exerciseDetails.equipmentCategory === equipment : exerciseDetails))
+          .filter((exerciseDetails) => (bodyPartId ? exerciseDetails.bodyPartCategory === bodyPartId : exerciseDetails))
+          .map(
+            ({
+              id,
+              name,
+              difficulty,
+              targetMuscles,
+              firstExerciseImage,
+              secondExerciseImage,
+              description,
+            }: IExerciseDetails) => (
               <div key={id} className={styles.card}>
                 <h3 className={styles.headline}>{name}</h3>
                 <div key={id}>
@@ -46,8 +42,14 @@ export const ExerciseCard: FC<IExerciseCardProps> = ({ bodyPartCategoryId }: IEx
                   </p>
                 </div>
                 <div className={styles.images}>
-                  <Image width={577} height={323} src={firstExerciseImage && firstExerciseImage} alt={name} />
-                  <Image width={577} height={323} src={secondExerciseImage && secondExerciseImage} alt={name} />
+                  {firstExerciseImage && secondExerciseImage ? (
+                    <>
+                      <Image width={577} height={323} src={firstExerciseImage} alt={name} />
+                      <Image width={577} height={323} src={secondExerciseImage} alt={name} />
+                    </>
+                  ) : (
+                    ''
+                  )}
                 </div>
                 <div>
                   <p>
@@ -60,34 +62,8 @@ export const ExerciseCard: FC<IExerciseCardProps> = ({ bodyPartCategoryId }: IEx
                   </p>
                 </div>
               </div>
-            ) : bodyPartCategoryId && bodyPartCategoryId === bodyPartCategory ? (
-              <div key={id} className={styles.card}>
-                <h3 className={styles.headline}>{name}</h3>
-                <div key={id}>
-                  <p>
-                    <strong>Сложность: </strong>
-                    {difficulty}
-                  </p>
-                </div>
-                <div className={styles.images}>
-                  <Image width={577} height={323} src={firstExerciseImage && firstExerciseImage} alt={name} />
-                  <Image width={577} height={323} src={secondExerciseImage && secondExerciseImage} alt={name} />
-                </div>
-                <div>
-                  <p>
-                    <strong>Задействованные мышечные группы: </strong>
-                    {targetMuscles}
-                  </p>
-                  <p>
-                    <strong>Описание: </strong>
-                    {description}
-                  </p>
-                </div>
-              </div>
-            ) : (
-              ''
             ),
-        )}
+          )}
     </div>
   )
 }

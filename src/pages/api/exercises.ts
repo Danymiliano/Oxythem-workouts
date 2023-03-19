@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { exercises } from './exercises/[id]'
+import { exercises } from './exercises/exercises'
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req

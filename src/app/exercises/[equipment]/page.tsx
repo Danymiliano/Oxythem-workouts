@@ -3,11 +3,11 @@ import { FC } from 'react'
 import { ExerciseCard } from '@/components/ExerciseCard/ExerciseCard'
 import { SelectionMenu } from '@/components/SelectionMenu/SelectionMenu'
 
-interface IEquipmentPage {
+interface IProps {
   params: { equipment: string }
 }
 
-const EquipmentPage: FC<IEquipmentPage> = ({ params }: IEquipmentPage) => (
+const EquipmentPage: FC<IProps> = ({ params }: IProps) => (
   <>
     <SelectionMenu />
     <div className='container'>

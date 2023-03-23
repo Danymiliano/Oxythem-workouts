@@ -3,11 +3,11 @@ import { FC } from 'react'
 import { ExerciseCard } from '@/components/ExerciseCard/ExerciseCard'
 import { SelectionMenu } from '@/components/SelectionMenu/SelectionMenu'
 
-interface IBodyPartPage {
-  params: { bodyPart: string | undefined; equipment: string | undefined }
+interface IProps {
+  params: { bodyPart?: string; equipment?: string }
 }
 
-const BodyPartPage: FC<IBodyPartPage> = ({ params }: IBodyPartPage) => (
+const BodyPartPage: FC<IProps> = ({ params }: IProps) => (
   <>
     <SelectionMenu bodyPart={params.bodyPart} />
     <div className='container'>

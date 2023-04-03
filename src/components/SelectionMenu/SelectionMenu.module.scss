@@ -1,3 +1,6 @@
+@import '@/styles/base/colors';
+@import '../../styles/base/typography';
+
 .section {
   display: flex;
   align-items: center;
@@ -8,6 +11,18 @@
 
     &:first-of-type {
       margin-left: 0;
+    }
+  }
+
+  .selections {
+    padding: 15px;
+    border-radius: $small-border-radius;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $hover-gray;
+      transition: all .2s;
     }
   }
 }

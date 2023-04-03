@@ -1,39 +1,31 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
+import { IExerciseDetails } from '@/pages/api/exercises/exercises'
+
 export interface EquipmentCategoryState {
-  bodyweight: boolean
-  dumbbells: boolean
-  barbell: boolean
-  band: boolean
+  exercisesByEquipment: IExerciseDetails[]
+  equipmentType: string | undefined
 }
 
 const initialState: EquipmentCategoryState = {
-  bodyweight: false,
-  dumbbells: false,
-  barbell: false,
-  band: false,
+  exercisesByEquipment: [],
+  equipmentType: 'bodyweight',
 }
 
 export const equipmentSlice = createSlice({
   name: 'Equipment',
   initialState,
   reducers: {
-    setActiveBodyweight(state, action: PayloadAction<EquipmentCategoryState>) {
-      state.bodyweight = !action.payload.bodyweight
+    saveExercises(state, action: PayloadAction<IExerciseDetails[]>) {
+      state.exercisesByEquipment = action.payload
     },
-    setActiveDumbbells(state, action: PayloadAction<EquipmentCategoryState>) {
-      state.dumbbells = !action.payload.dumbbells
-    },
-    setActiveBarbell(state, action: PayloadAction<EquipmentCategoryState>) {
-      state.barbell = !action.payload.barbell
-    },
-    setActiveBand(state, action: PayloadAction<EquipmentCategoryState>) {
-      state.band = !action.payload.band
+    saveEquipmentType(state, action: PayloadAction<string>) {
+      state.equipmentType = action.payload
     },
   },
 })
 
-export const { setActiveBodyweight, setActiveDumbbells, setActiveBarbell, setActiveBand } = equipmentSlice.actions
+export const { saveExercises, saveEquipmentType } = equipmentSlice.actions
 
 export default equipmentSlice.reducer

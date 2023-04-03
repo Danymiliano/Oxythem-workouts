@@ -1,5 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
-import React, { ReactNode } from 'react'
+'use client'
 
 import { BodyMap } from '@/components/BodyMap/BodyMap'
 

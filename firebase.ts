@@ -3,15 +3,15 @@ import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: process.env.MY_NEXT_APIKEY,
-  authDomain: process.env.MY_NEXT_AUTHDOMAIN,
-  projectId: process.env.MY_NEXT_PROJECTID,
-  storageBucket: process.env.MY_NEXT_STORAGEBUCKET,
-  messagingSenderId: process.env.MY_NEXT_MESSAGINGSENDERID,
-  appId: process.env.MY_NEXT_APPID,
+  apiKey: process.env.NEXT_PUBLIC_APIKEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_APPID,
 }
 
 const app = initializeApp(firebaseConfig)
 
 export const auth = getAuth(app)
-export const firestore = getFirestore(app)
+export const db = getFirestore(app)

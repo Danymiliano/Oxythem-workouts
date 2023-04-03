@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { FC } from 'react'
 
+import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { SvgInline } from '@/components/SvgInline/SvgInline'
 
 import styles from '../Header/Header.module.scss'
@@ -12,6 +13,7 @@ export const Header: FC = (): JSX.Element => (
         <Link href='/'>
           <SvgInline name='logo' width='400' height='43' />
         </Link>
+        <SearchBar placeholder='Поиск' />
         <nav>
           <ul className={styles['nav-wrapper']}>
             <li className={styles.item}>

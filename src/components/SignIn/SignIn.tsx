@@ -1,9 +1,15 @@
 'use client'
 
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { useFormik } from 'formik'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
+import { FormEvent } from 'react'
 import * as Yup from 'yup'
+
+import { useAppDispatch } from '@/hooks/useAppDispatch'
+import { setUser } from '@/store/slices/userSlice'
 
 import { Button } from '../base/Button/Button'
 import styles from './SignIn.module.scss'
@@ -20,15 +26,34 @@ export const SignIn = () => {
       password: Yup.string().required('Введите пароль, чтобы войти'),
     }),
 
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2))
+    onSubmit: () => {
+      alert('Вы успешно залогинились')
     },
   })
+  const router = useRouter()
+  const dispatch = useAppDispatch()
+
+  const handleLogin = (e: FormEvent<HTMLFormElement>, email: string, password: string) => {
+    e.preventDefault()
+    const auth = getAuth()
+    signInWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+            token: user.refreshToken,
+          }),
+        )
+        router.push('/')
+      })
+      .catch(() => alert('Пользователя не существует'))
+  }
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.box}>
-        <form onSubmit={formik.handleSubmit} className={styles.form}>
+        <form onSubmit={(e) => handleLogin(e, formik.values.email, formik.values.password)} className={styles.form}>
           <h3 className={styles.header}>Вход</h3>
 
           <div className={styles.inputs}>

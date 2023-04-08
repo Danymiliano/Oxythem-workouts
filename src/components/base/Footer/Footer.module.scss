@@ -1,0 +1,16 @@
+@import '@/styles/base/_breakpoints.scss';
+@import '@/styles/base/_colors.scss';
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 5em;
+  background-color: $primary;
+  height: 200px;
+
+  .copyright {
+    display: flex;
+    align-items: center;
+    color: $secondary;
+  }
+}

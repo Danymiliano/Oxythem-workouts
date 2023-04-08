@@ -1,13 +1,20 @@
 'use client'
 
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
 import { useFormik } from 'formik'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { FormEvent } from 'react'
 import * as Yup from 'yup'
+
+import { useAppDispatch } from '@/hooks/useAppDispatch'
+import { setUser } from '@/store/slices/userSlice'
 
 import { Button } from '../base/Button/Button'
 import styles from './SignUp.module.scss'
 
 export const SignUp = () => {
+  const router = useRouter()
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -27,14 +34,34 @@ export const SignUp = () => {
         .required('Подтвердите пароль, чтобы зарегистрироваться'),
     }),
 
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2))
+    onSubmit: () => {
+      alert('Вы успешно зарегистрировались')
     },
   })
+
+  const dispatch = useAppDispatch()
+
+  const handleRegister = (e: FormEvent<HTMLFormElement>, email: string, password: string): void => {
+    e.preventDefault()
+    const auth = getAuth()
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+            token: user.refreshToken,
+          }),
+        )
+        router.push('/')
+      })
+      .catch(() => alert('Не удалось создать пользователя'))
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.box}>
-        <form onSubmit={formik.handleSubmit} className={styles.form}>
+        <form onSubmit={(e) => handleRegister(e, formik.values.email, formik.values.password)} className={styles.form}>
           <h3 className={styles.header}>Регистрация</h3>
 
           <div className={styles.inputs}>

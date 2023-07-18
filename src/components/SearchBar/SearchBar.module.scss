@@ -18,15 +18,10 @@
   cursor: pointer;
 }
 
-.spinner {
-  position: relative;
-  top: 2px;
-  right: 29px;
-}
-
-.result {
+.open {
   position: absolute;
   margin-top: 5px;
+  padding: 0;
   width: 300px;
   height: 115px;
   background-color: $white;
@@ -34,6 +29,7 @@
   overflow: hidden;
   overflow-y: auto;
   border-radius: $small-border-radius;
+  list-style: none;
 
 
   .item {
@@ -46,18 +42,25 @@
 
 }
 
-.result::-webkit-scrollbar {
+.open::-webkit-scrollbar {
+  display: none;
+}
+
+.closed {
   display: none;
 }
 
 .exercise {
 
-  p {
-    padding-left: 10px;
-    background-color: $secondary;
-  }
+  padding: 10px;
 
   &:hover {
-    background-color: $secondary;
+    background-color: $tertiary;
+    cursor: pointer;
+  }
+
+  p {
+    margin: 0;
   }
 }
+

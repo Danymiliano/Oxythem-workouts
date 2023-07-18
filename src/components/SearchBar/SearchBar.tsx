@@ -74,12 +74,11 @@ export const SearchBar: FC<SearchBarProps> = ({ placeholder }: SearchBarProps) =
         ref={resultRef}
         style={exercises.length <= 0 && debouncedValue === '' ? { display: 'none' } : { display: 'block' }}
       >
-        {exercises &&
-          exercises.slice(0, 10).map(({ id, name, equipmentCategory, bodyPartCategory }: IExerciseDetails) => (
-            <Link href={`/exercises/${equipmentCategory}/${bodyPartCategory}`} className={styles.exercise} key={id}>
-              <p>{name}</p>
-            </Link>
-          ))}
+        {exercises?.slice(0, 10).map(({ id, name, equipmentCategory, bodyPartCategory }: IExerciseDetails) => (
+          <Link href={`/exercises/${equipmentCategory}/${bodyPartCategory}`} className={styles.exercise} key={id}>
+            <p>{name}</p>
+          </Link>
+        ))}
       </div>
     </div>
   )
